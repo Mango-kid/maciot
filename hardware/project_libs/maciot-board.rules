@@ -1,0 +1,85 @@
+
+(rules PCB maciot-board
+  (snap_angle 
+    fortyfive_degree
+  )
+  (autoroute_settings
+    (fanout off)
+    (autoroute on)
+    (postroute on)
+    (vias on)
+    (via_costs 50)
+    (plane_via_costs 5)
+    (start_ripup_costs 100)
+    (start_pass_no 2196)
+    (layer_rule F.Cu
+      (active on)
+      (preferred_direction horizontal)
+      (preferred_direction_trace_costs 1.0)
+      (against_preferred_direction_trace_costs 2.3)
+    )
+    (layer_rule B.Cu
+      (active on)
+      (preferred_direction vertical)
+      (preferred_direction_trace_costs 1.0)
+      (against_preferred_direction_trace_costs 1.8)
+    )
+  )
+  (rule
+    (width 250.0)
+    (clear 200.2)
+    (clear 125.0 (type smd_to_turn_gap))
+    (clear 50.0 (type smd_smd))
+  )
+  (padstack "Via[0-1]_600:400_um"
+    (shape
+      (circle F.Cu 600.0 0.0 0.0)
+    )
+    (shape
+      (circle B.Cu 600.0 0.0 0.0)
+    )
+    (attach off)
+  )
+  (via 
+    "Via[0-1]_600:400_um" "Via[0-1]_600:400_um" default
+  )
+  (via 
+    "Via[0-1]_600:400_um-kicad_default" "Via[0-1]_600:400_um" "kicad_default"
+  )
+  (via_rule
+    default "Via[0-1]_600:400_um"
+  )
+  (via_rule
+    "kicad_default" "Via[0-1]_600:400_um-kicad_default"
+  )
+  (class default
+    (clearance_class default)
+    (via_rule default)
+    (rule
+      (width 250.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+  (class "kicad_default"
+    /IOREF /Reset +5V GND /A0 /A1 /A2 /A3
+    /AREF "/A4(SDA)" "/A5(SCL)" "/9(**)" /8 /7 "/6(**)" "/5(**)"
+    /4 "/3(**)" /2 "/1(Tx)" "/0(Rx)" "Net-(P5-Pad1)" "Net-(P6-Pad1)" "Net-(P7-Pad1)"
+    "Net-(P8-Pad1)" "/13(SCK)" "/10(**/SS)" "Net-(P1-Pad1)" +3V3 "/12(MISO)" "/11(**/MOSI)" "Net-(C101-Pad1)"
+    "Net-(C102-Pad1)" "Net-(D101-Pad1)" "Net-(D102-Pad1)" "Net-(D103-Pad1)" "Net-(D104-Pad1)" "Net-(D105-Pad1)" "Net-(F101-Pad2)" VPP
+    "/D-" /D+ "Net-(P101-Pad4)" /EN /IO0 /BATT "Net-(Q101-Pad1)" "/USB_RXD"
+    "/USB_TXD" "Net-(R108-Pad1)" /LDR "Net-(R117-Pad2)" "Net-(R118-Pad2)" "Net-(SW103-Pad1)" /SWITCH0 /SWITCH1
+    "Net-(SW104-Pad1)" "Net-(SW105-Pad1)" "Net-(U103-Pad38)" "Net-(U103-Pad32)" "Net-(U103-Pad22)" "Net-(U103-Pad21)" "Net-(U103-Pad20)" "Net-(U103-Pad19)"
+    "Net-(U103-Pad18)" "Net-(U103-Pad17)" /A4 /A5 "Net-(U102-Pad28)" "Net-(U102-Pad27)" "Net-(U102-Pad24)" "Net-(U102-Pad23)"
+    "Net-(U102-Pad10)" "Net-(U102-Pad18)" "Net-(U102-Pad12)" "Net-(U102-Pad11)" "Net-(U102-Pad9)" "Net-(U102-Pad2)" "Net-(U102-Pad1)"
+    (clearance_class "kicad_default")
+    (via_rule kicad_default)
+    (rule
+      (width 250.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+)
